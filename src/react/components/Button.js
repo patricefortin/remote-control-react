@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   onClick: PropTypes.func.isRequired,
-  target: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
 }
 
@@ -12,7 +10,7 @@ export const Button = (props) => (
   <button 
     type='button'
     className='btn btn-primary'
-    onClick={() => props.onClick(props.baseUrl, props.target, props.value)}
+    onClick={props.onClick}
   >
     {props.label}
   </button>
@@ -23,7 +21,7 @@ export const ButtonOn = (props) => (
   <button 
     type='button'
     className='btn btn-success'
-    onClick={() => props.onClick(props.baseUrl, props.target, props.value)}
+    onClick={props.onClick}
   >
     {props.label}
   </button>
@@ -34,7 +32,7 @@ export const ButtonOff = (props) => (
   <button 
     type='button'
     className='btn btn-danger'
-    onClick={() => props.onClick(props.baseUrl, props.target, props.value)}
+    onClick={props.onClick}
   >
     {props.label}
   </button>

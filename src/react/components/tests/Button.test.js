@@ -4,8 +4,6 @@ import { Button, ButtonOn, ButtonOff } from '../Button';
 
 const props = {
   label: 'my label',
-  target: 'foo',
-  value: 'bar',
   onClick: jest.fn(),
 };
 

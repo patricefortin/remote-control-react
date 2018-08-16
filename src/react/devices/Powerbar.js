@@ -1,42 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import * as powerbar from '../../actions/powerbar';
 
 import { Container, Row, Col } from '../components/Grid';
 import { Card } from '../components/Card';
 import { ButtonGroup, ButtonOn, ButtonOff } from '../components/Button';
 
-const BASE_URL = 'http://192.168.1.113/api';
+const mapStateToProps = null;
+const mapDispatchToProps = (dispatch) => ({
+  leftOn: () => dispatch(powerbar.leftOn()),
+  leftOff: () => dispatch(powerbar.leftOff()),
+  rightOn: () => dispatch(powerbar.rightOn()),
+  rightOff: () => dispatch(powerbar.rightOff()),
+})
 
-const ButtonLeftOn = ({onClick}) => <ButtonOn
+const ButtonLeftOn = (props) => <ButtonOn
   label="ON" 
-  onClick={onClick} 
-  baseUrl={BASE_URL}
-  target="left"
-  value="1"
+  onClick={props.leftOn} 
 />;
 
-const ButtonLeftOff = ({onClick}) => <ButtonOff
+const ButtonLeftOff = (props) => <ButtonOff
   label="OFF" 
-  onClick={onClick} 
-  baseUrl={BASE_URL}
-  target="left"
-  value="0"
+  onClick={props.leftOff} 
 />;
 
-const ButtonRightOn = ({onClick}) => <ButtonOn
+const ButtonRightOn = (props) => <ButtonOn
   label="ON" 
-  onClick={onClick} 
-  baseUrl={BASE_URL}
-  target="right"
-  value="1"
+  onClick={props.rightOn} 
 />;
 
-const ButtonRightOff = ({onClick}) => <ButtonOff
+const ButtonRightOff = (props) => <ButtonOff
   label="OFF" 
-  onClick={onClick} 
-  baseUrl={BASE_URL}
-  target="right"
-  value="0"
+  onClick={props.rightOff} 
 />;
 
 const Powerbar = (props) => (
@@ -66,4 +63,4 @@ Powerbar.propTypes = {
   onClick: PropTypes.func.isRequired,
 }
 
-export default Powerbar;
+export default connect(mapStateToProps, mapDispatchToProps)(Powerbar);
